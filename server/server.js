@@ -1,4 +1,5 @@
 require('dotenv').config();
+//loads in .env file, should be the first line in your server
 const express = require('express');
 const bodyParser = require('body-parser');
 const pool = require('./modules/pool');
@@ -76,7 +77,20 @@ app.put('/tasks/:id', (req, res) => {
     });
 });
 
-const port = 3000;
+console.log('process.env', process.env)
+
+console.log('your home directory is', process.env.HOME);
+
+console.log('your fav food is', process.env.FAV_FOOD);
+//run in your terminal: fav_foods=artichokes npm start
+
+console.log('Your prefered port is', process.env.PORT);
+
+const port = process.env.PORT || 3000;
+//set this to the PORT given, if no port is specified set it to 3000 automatically
+
+
+
 
 console.log(`We're going to listen on port`, port);
 app.listen(port, () => {
